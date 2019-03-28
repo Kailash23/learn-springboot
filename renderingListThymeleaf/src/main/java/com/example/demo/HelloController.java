@@ -3,7 +3,9 @@ package com.example.demo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+/**
+ * Rendering the Web view using the Thymeleaf template engine. 
+ */
 @Controller
 public class HelloController {
 

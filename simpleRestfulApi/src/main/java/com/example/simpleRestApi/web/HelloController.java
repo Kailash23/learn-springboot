@@ -1,4 +1,4 @@
-package com.juggernaut.simpleRestApi.web;
+package com.example.simpleRestApi.web;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

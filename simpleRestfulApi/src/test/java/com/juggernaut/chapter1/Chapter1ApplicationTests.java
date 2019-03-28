@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.juggernaut.simpleRestApi.web.HelloController;
+import com.example.simpleRestApi.web.HelloController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
