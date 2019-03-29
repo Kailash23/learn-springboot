@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-
 // The Entity annotation mark this class as a JPA entity.
 @Entity
 @Table(name = "users")
@@ -25,6 +24,7 @@ public class User {
 	private String name;
 
 	public User() {
+
 	}
 
 	public User(long id) {
