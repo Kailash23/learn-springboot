@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Patient List</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="row container">
+        <div class="col-lg-1">
+        </div>
+        <div class="col-lg-10">
+            <h2 style="text-align: center;">Table</h2>
+            <table id="myTable" border="1" width="100%">
+                <thead class="thead-dark">
+                    <tr>
+                        <th width="20%">
+                            <p align="center">First Name</p>
+                        </th>
+                        <th width="20%">
+                            <p align="center">Last Name</p>
+                        </th>
+                        <th width="20%">
+                            <p align="center">Date of Birth</p>
+                        </th>
+                        <th width="20%">
+                            <p align="center">Height</p>
+                        </th>
+                        <th width="20%">
+                            <p align="center">Weight</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="cursor: pointer" th:each="row : ${rowlist}">
+                        <td width="20%">
+                            <p align="center" th:text="${row.firstname}">
+                        </td>
+                        <td width="20%">
+                            <p align="center" th:text="${row.lastname}">
+                        </td>
+                        <td width="20%">
+                            <p align="center" th:text="${row.dob}">
+                        </td>
+                        <td width="20%">
+                            <p align="center" th:text="${row.height}">
+                        </td>
+                        <td width="20%">
+                            <p align="center" th:text="${row.weight}">
+                        </td>
+                    </tr>
+                    <tbody>
+            </table>
+        </div>
+        <div class="col-lg-1">
+        </div>
+    </div>
+</body>
