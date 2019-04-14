@@ -68,3 +68,12 @@ local.properties
 .cache-main
 .scala_dependencies
 .worksheet
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache

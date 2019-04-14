@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hello world page</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div layout:fragment="content">
+                    <div class="list-group">
+                        <a th:each="resource : ${resources}" th:href="${resource.url}" class="list-group-item"> <b th:text="${resource.name}"></b>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    <script src="/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
