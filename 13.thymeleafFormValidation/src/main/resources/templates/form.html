@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+
+    <title>Form validation using thymeleaf</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/form.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-7">
+                <h1>Form Validation</h1>
+                <form action="#" th:object="${forminfo}" th:action="@{/submit}" method="post">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" th:value="${formRequestDto.name}" th:field="*{name}" class="form-control" placeholder="Enter name">
+	                        	<div th:if="${bool == true}">
+	                        		 <p th:text="${formRequestDto.nameErrorText}" style="color: red">Invalid name!</p>
+	                        	</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" th:value="${formRequestDto.email}" th:field="*{email}" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
+                    	 	<div th:if="${#strings.isEmpty(formRequestDto.email)}">
+                    	 		<div th:if="${bool == true}">
+                    	 			<p style="color: red">Invalid email!</p>
+                    	 		</div>
+                    	 	</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" th:value="${formRequestDto.phoneNumber}" th:field="*{phoneNumber}" class="form-control" placeholder="Enter phone number">
+                    		<div th:if="${#strings.isEmpty(formRequestDto.phoneNumber)}">
+                    			<div th:if="${bool == true}">
+                    				<p style="color: red">Invalid phone number!</p>
+                    				</div>
+                    		</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" th:value="${formRequestDto.password}" th:field="*{password}" class="form-control" placeholder="Enter password">
+                    		<div th:if="${#strings.isEmpty(formRequestDto.password)}">
+                    			<div th:if="${bool == true}">
+                    				<p style="color: red">Invalid password!</p>
+                    			</div>
+                    		</div>
+                    </div>
+                    <div th:if="${bool != true}">
+                  		  <button type="submit" class="btn btn-primary">Submit</button>
+                  	 </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
