@@ -10,6 +10,15 @@ public class FormRequestDto {
 	private String emailErrorText;
 	private String phoneNumberErrorText;
 	private String passwordErrorText;
+	private Boolean flag;
+
+	public Boolean getFlag() {
+		return flag;
+	}
+
+	public void setFlag(Boolean flag) {
+		this.flag = flag;
+	}
 
 	public String getNameErrorText() {
 		return nameErrorText;
@@ -73,5 +82,13 @@ public class FormRequestDto {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "FormRequestDto [name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber + ", password="
+				+ password + ", nameErrorText=" + nameErrorText + ", emailErrorText=" + emailErrorText
+				+ ", phoneNumberErrorText=" + phoneNumberErrorText + ", passwordErrorText=" + passwordErrorText
+				+ ", flag=" + flag + "]";
 	}
 }
