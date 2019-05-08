@@ -15,7 +15,7 @@
         </div>
         <div class="col-lg-10">
             <h2 style="text-align: center;">Table</h2>
-            <table id="myTable" border="1" width="100%">
+            <table class="table" id="myTable" border="1" width="100%">
                 <thead class="thead-dark">
                     <tr>
                         <th width="20%">
@@ -35,7 +35,9 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+            </table>
+            <table class="table">
+                <thead class="thead-light">
                     <tr style="cursor: pointer" th:each="row : ${rowlist}">
                         <td width="20%">
                             <p align="center" th:text="${row.firstname}">
@@ -53,7 +55,7 @@
                             <p align="center" th:text="${row.weight}">
                         </td>
                     </tr>
-                    <tbody>
+                </thead>
             </table>
         </div>
         <div class="col-lg-1">

@@ -17,9 +17,10 @@ import com.example.demo.dto.User;
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
-
+	
+	// get(), put and keyset() are synchronized and can be safely used concurrently. 
 	static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
-
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public List<User> getUserList() {
 		List<User> list = new ArrayList<User>(users.values());
@@ -44,10 +45,10 @@ public class UserController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public String putUser(@PathVariable Long id, @ModelAttribute User user) {
-		User u = users.get(id);
-		u.setName(user.getName());
-		u.setAge(user.getAge());
-		users.put(id, u);
+		User newUser = users.get(id);
+		newUser.setName(user.getName());
+		newUser.setAge(user.getAge());
+		users.put(id, newUser);
 		return "success";
 	}
 

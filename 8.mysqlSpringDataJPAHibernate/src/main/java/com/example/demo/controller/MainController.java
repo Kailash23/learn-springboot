@@ -11,18 +11,14 @@ import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 
 @Controller 
-@RequestMapping("/demo") // This means URL's start with /demo (after Application path)
+@RequestMapping("/demo")
 public class MainController {
 
 	@Autowired
 	private UserRepository userRepository;
 
-	/**
-	 * Add : localhost:8080/demo/add?name=Name&email=example@example.com
-	 * 
-	 * @param name  
-	 * @param email
-	 */
+	//localhost:8080/demo/add?name=Name&email=example@example.com
+	
 	@GetMapping("/add") // Map ONLY GET Requests
 	public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email) {
 		// @ResponseBody means the returned String is the response, not a view name

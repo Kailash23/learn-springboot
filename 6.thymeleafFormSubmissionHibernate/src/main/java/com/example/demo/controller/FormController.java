@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,10 +29,7 @@ public class FormController {
 	@ResponseBody
 	public String formDataSubmission(@ModelAttribute FormDto formDto) {
 		Form form = new Form();
-		form.setName(formDto.getName());
-		form.setEmail(formDto.getEmail());
-		form.setPhoneNumber(formDto.getPhoneNumber());
-		form.setAddress(formDto.getAddress());
+		BeanUtils.copyProperties(formDto, form);
 		formRepository.save(form);
 		return "Submitted!";
 	}
