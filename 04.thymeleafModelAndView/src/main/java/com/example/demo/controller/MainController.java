@@ -16,7 +16,7 @@ public class MainController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/save", method = RequestMethod.POST)  // Or Simply @PostMapping
 	public ModelAndView save(@ModelAttribute User user) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("user-data");
