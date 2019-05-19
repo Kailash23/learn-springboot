@@ -3,11 +3,15 @@ package com.example.demo.repository;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import com.example.demo.model.Details;
 
 public interface DetailsRepository extends CrudRepository<Details, Integer> {
+
+	// Query By Method Name
 
 	Details findByFirstNameAndLastName(String firstName, String lastName);
 
@@ -27,7 +31,7 @@ public interface DetailsRepository extends CrudRepository<Details, Integer> {
 
 	List<Details> findByFirstNameContaining(String firstName);
 
-	List<Details> findByAgeOrderByLastNameDesc(int age);
+	List<Details> findByFirstNameStartingWithOrderByLastNameDesc(String name);
 
 	List<Details> findByLastNameNot(String lastName);
 
@@ -43,5 +47,21 @@ public interface DetailsRepository extends CrudRepository<Details, Integer> {
 			Date endDate);
 
 	List<Details> findByStartDateAfterAndEndDateBefore(Date startDate, Date endDate);
+
+	List<Details> findTop3ByLastNameEndingWith(String letter);
+
+	// Declare query using @Query
+
+	@Query("select u from details u where u.firstName = ?1 and u.lastName = ?2")
+	Details findByFullName(String firstName, String lastName);
+
+	// Query using named parameter
+
+	@Query("select u from details u where u.firstName = :firstName or u.lastName = :lastName")
+	List<Details> findByFirstNameOrLastName(@Param("firstName") String firstName, @Param("lastName") String lastName);
+
+	// Using SpEL Expressions
+	@Query("select u from #{#entityName} u where u.lastName = ?1")
+	List<Details> findByLastname(String lastName);
 
 }

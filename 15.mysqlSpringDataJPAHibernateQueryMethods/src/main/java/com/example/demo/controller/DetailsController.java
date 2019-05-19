@@ -38,6 +38,8 @@ public class DetailsController {
 	@ResponseBody
 	public String namedMethods() {
 
+		// <-- Query By Method Name -->
+
 		// Fetch all row
 		Iterable<Details> listAll = detailsRepository.findAll();
 		listAll.forEach(row -> System.out.println(row.toString()));
@@ -69,12 +71,12 @@ public class DetailsController {
 		userDetails1.setEndDate(new Date());
 		detailsRepository.delete(userDetails1);
 
-		List<Details> detailsList = detailsRepository.findByAgeOrderByLastNameDesc(23);
+		List<Details> detailsList = detailsRepository.findByFirstNameStartingWithOrderByLastNameDesc("k");
 		detailsList.forEach(row -> System.out.println(row.toString()));
 
-		Details details = detailsRepository.findByFirstNameAndLastName("Jorrie", "Gowrich");
-		if (details != null) {
-			System.out.println(details.toString());
+		Details detailsObj = detailsRepository.findByFirstNameAndLastName("Jorrie", "Gowrich");
+		if (detailsObj != null) {
+			System.out.println(detailsObj.toString());
 		} else {
 			System.out.println("Not Preset!");
 		}
@@ -117,9 +119,29 @@ public class DetailsController {
 		detailsList6.forEach(row -> System.out.println(row.toString()));
 		System.out.println(startDate1.getTime().toString());
 		System.out.println(endDate1.getTime().toString());
-		
+
 		List<Details> detailsList7 = detailsRepository.findByAgeIsNull();
 		detailsList7.forEach(row -> System.out.println(row.toString()));
+
+		List<Details> detailsList8 = detailsRepository.findTop3ByLastNameEndingWith("i");
+		detailsList8.forEach(row -> System.out.println(row.toString()));
+
+		// Declare query using @Query
+
+		Details detailsObj1 = detailsRepository.findByFullName("Jorrie", "Gowrich");
+		if (detailsObj1 != null) {
+			System.out.println(detailsObj1.toString());
+		} else {
+			System.out.println("Not Preset!");
+		}
+
+		// Using Named Parameters
+
+		List<Details> detailsList9 = detailsRepository.findByFirstNameOrLastName("Jorrie", "Lothbrok");
+		detailsList9.forEach(row -> System.out.println(row.toString()));
+
+		List<Details> detailsList10 = detailsRepository.findByLastname("Lothbrok");
+		detailsList10.forEach(row -> System.out.println(row.toString()));
 
 		return "Result displayed in console!";
 	}
