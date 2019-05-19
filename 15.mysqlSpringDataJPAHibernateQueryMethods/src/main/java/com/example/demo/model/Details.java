@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.Type;
+
 @Entity(name = "details")
 public class Details {
 
@@ -25,7 +27,8 @@ public class Details {
 	private Integer age;
 
 	@Column(name = "status")
-	private Integer status;
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	private boolean status;
 
 	@Column(name = "start_date")
 	private Date startDate;
@@ -65,11 +68,11 @@ public class Details {
 		this.age = age;
 	}
 
-	public Integer getStatus() {
+	public boolean isStatus() {
 		return status;
 	}
 
-	public void setStatus(Integer status) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 

@@ -39,4 +39,6 @@ public interface DetailsRepository extends CrudRepository<Details, Integer> {
 	
 	List<Details> findByFirstNameStartingWithAndEndDateBetweenAndStatusNotNullOrderByIdDesc(String name, Date startDate, Date endDate);
 	
+	List<Details> findByStartDateAfterAndEndDateBefore(Date startDate, Date endDate);
+	
 }
