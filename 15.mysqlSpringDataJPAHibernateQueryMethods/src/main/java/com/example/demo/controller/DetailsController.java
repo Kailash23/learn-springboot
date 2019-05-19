@@ -24,8 +24,8 @@ public class DetailsController {
 	@ResponseBody
 	public String excuteQuery() {
 		Details details = new Details();
-		details.setFirstName("Kailash");
-		details.setLastName("Uniyal");
+		details.setFirstName("Roger");
+		details.setLastName("Singh");
 		details.setAge(23);
 		details.setStatus(true);
 		details.setStartDate(new Date());
@@ -38,7 +38,7 @@ public class DetailsController {
 	@ResponseBody
 	public String namedMethods() {
 
-		// Display whole table
+		// Fetch all row
 		Iterable<Details> listAll = detailsRepository.findAll();
 		listAll.forEach(row -> System.out.println(row.toString()));
 
@@ -46,7 +46,7 @@ public class DetailsController {
 		int id = 23;
 		Details obj = detailsRepository.findById(id).get();
 		System.out.println(obj.toString());
-		
+
 		// Update a row
 		Details userDetails = new Details();
 		userDetails.setId(108);
@@ -101,6 +101,25 @@ public class DetailsController {
 
 		List<Details> onlineUserList = detailsRepository.findByStatusTrue();
 		onlineUserList.forEach(row -> System.out.println(row.toString()));
+
+		List<Details> detailsList5 = detailsRepository.findFirstNameDistinctByFirstNameStartingWith("K");
+		detailsList5.forEach(row -> System.out.println(row.toString()));
+
+		Calendar startDate1 = Calendar.getInstance();
+		startDate1.setTime(new Date());
+		startDate1.add(Calendar.YEAR, -1);
+
+		Calendar endDate1 = Calendar.getInstance();
+		endDate1.setTime(new Date());
+
+		List<Details> detailsList6 = detailsRepository.findByStartDateAfterAndEndDateBefore(startDate1.getTime(),
+				endDate1.getTime());
+		detailsList6.forEach(row -> System.out.println(row.toString()));
+		System.out.println(startDate1.getTime().toString());
+		System.out.println(endDate1.getTime().toString());
+		
+		List<Details> detailsList7 = detailsRepository.findByAgeIsNull();
+		detailsList7.forEach(row -> System.out.println(row.toString()));
 
 		return "Result displayed in console!";
 	}

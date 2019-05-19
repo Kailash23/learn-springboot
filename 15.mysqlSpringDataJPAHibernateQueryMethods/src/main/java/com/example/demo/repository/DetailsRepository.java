@@ -32,13 +32,16 @@ public interface DetailsRepository extends CrudRepository<Details, Integer> {
 	List<Details> findByLastNameNot(String lastName);
 
 	List<Details> findByAgeIn(List<Integer> list);
-	
+
 	List<Details> findByStatusTrue();
-	
-	List<Details> findByFirstNameAndStartDateBetweenOrderByIdDesc(String firstName, Date startDate, Date endDate);
-	
-	List<Details> findByFirstNameStartingWithAndEndDateBetweenAndStatusNotNullOrderByIdDesc(String name, Date startDate, Date endDate);
-	
+
+	List<Details> findFirstNameDistinctByFirstNameStartingWith(String firstName);
+
+	List<Details> findByStatusTrueAndStartDateBetweenOrderByIdAsc(Date startDate, Date endDate);
+
+	List<Details> findByFirstNameStartingWithAndEndDateBetweenAndStatusNotNullOrderByIdDesc(String name, Date startDate,
+			Date endDate);
+
 	List<Details> findByStartDateAfterAndEndDateBefore(Date startDate, Date endDate);
-	
+
 }
