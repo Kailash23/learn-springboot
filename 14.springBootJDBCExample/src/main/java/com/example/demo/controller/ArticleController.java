@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.example.demo.entity.Article;
-import com.example.demo.service.IArticleService;
+import com.example.demo.service.ArticleService;
 
 @Controller
 @RequestMapping("user")
 public class ArticleController {
 
 	@Autowired
-	private IArticleService articleService;
+	private ArticleService articleService;
 
 	@GetMapping("article/{id}")
 	public ResponseEntity<Article> getArticleById(@PathVariable("id") Integer id) {
