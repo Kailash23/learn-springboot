@@ -8,13 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "articles")
+@Table(name = "articles_new")
 public class Article {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "article_id")
-	private long articleId;
+	@Column(name = "id")
+	private long id;
 
 	@Column(name = "title")
 	private String title;
@@ -22,12 +22,12 @@ public class Article {
 	@Column(name = "category")
 	private String category;
 
-	public long getArticleId() {
-		return articleId;
+	public long getId() {
+		return id;
 	}
 
-	public void setArticleId(long articleId) {
-		this.articleId = articleId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
