@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 
-@Controller 
+@Controller
 @RequestMapping("/demo")
 public class MainController {
 
 	@Autowired
 	private UserRepository userRepository;
 
-	//localhost:8080/demo/add?name=Name&email=example@example.com
-	
+	// localhost:8080/demo/add?name=Name&email=example@example.com
+
 	@GetMapping("/add") // Map ONLY GET Requests
 	public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email) {
 		// @ResponseBody means the returned String is the response, not a view name
@@ -31,7 +31,8 @@ public class MainController {
 	}
 
 	@GetMapping("/all")
-	public @ResponseBody Iterable<User> getAllUsers() {
+	@ResponseBody
+	public Iterable<User> getAllUsers() {
 		// This returns a JSON or XML with the users
 		return userRepository.findAll();
 	}

@@ -31,8 +31,8 @@ public class UserController {
 			} else {
 				message = "User already exists!";
 			}
-		} catch (Exception ex) {
-			message = "Error creating the user: " + ex.toString();
+		} catch (Exception e) {
+			message = "Error creating the user: " + e.toString();
 		}
 		return message;
 	}
@@ -43,8 +43,8 @@ public class UserController {
 		try {
 			User user = new User(id);
 			userRepository.delete(user);
-		} catch (Exception ex) {
-			return "Error deleting the user:" + ex.toString();
+		} catch (Exception e) {
+			return "Error deleting the user:" + e.toString();
 		}
 		return "User succesfully deleted!";
 	}
@@ -56,7 +56,7 @@ public class UserController {
 		try {
 			User user = userRepository.findByEmail(email);
 			userId = String.valueOf(user.getId());
-		} catch (Exception ex) {
+		} catch (Exception e) {
 			return "User not found";
 		}
 		return "The user id is: " + userId;
@@ -70,8 +70,8 @@ public class UserController {
 			user.get().setEmail(email);
 			user.get().setName(name);
 			userRepository.save(user.get());
-		} catch (Exception ex) {
-			return "Error updating the user: " + ex.toString();
+		} catch (Exception e) {
+			return "Error updating the user: " + e.toString();
 		}
 		return "User succesfully updated!";
 	}
