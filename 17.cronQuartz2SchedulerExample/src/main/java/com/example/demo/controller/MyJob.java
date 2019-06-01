@@ -14,7 +14,7 @@ public class MyJob implements Job {
 	public void execute(JobExecutionContext context) throws JobExecutionException {
 		JobDetail jobDetail = context.getJobDetail();
 		JobKey key = jobDetail.getKey();
-		System.out.println("For Job key:" + key + ", Current Date:" + new Date());
+		System.out.println("Cron Job Executed : job name : " + key.getGroup() + ", Current Date:" + new Date());
 	}
 
 }
