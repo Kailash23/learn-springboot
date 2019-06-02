@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+	package com.example.demo.controller;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
@@ -24,7 +24,7 @@ public class MainController implements Filter {
 	@GetMapping("/")
 	@ResponseBody
 	public String home() {
-		return "<em><strong>Valid url eg. :- <a href='http://localhost:8080/home'>http://localhost:8080/home</a><br> <br></strong></em>"
+		return "<em><strong>Valid url eg. :- <a href='http://localhost:8080/home'>http://localhost:8080/home</a></strong></em><br>"
 				+ "<em><strong>Invalid url eg. :- <a href='http://localhost:8080/home^'>http://localhost:8080/home^</a></strong></em>";
 	}
 	
@@ -32,14 +32,14 @@ public class MainController implements Filter {
 	@ResponseBody
 	public String valid() {
 		count++;
-		return "<em><strong>(" + count + ") This is a valid url! Type more ^</strong></em>";
+		return "<em><strong>(" + count + ") This is a valid url! Try more ^</strong></em>";
 	}
 
 	@GetMapping("/invalid")
 	@ResponseBody
 	public String invalid() {
 		count++;
-		return "<em><strong>(" + count + ") This is not a valid url! Type more ^</strong></em>";
+		return "<em><strong>(" + count + ") This is not a valid url! Try more ^</strong></em>";
 	}
 
 	@GetMapping("/*")

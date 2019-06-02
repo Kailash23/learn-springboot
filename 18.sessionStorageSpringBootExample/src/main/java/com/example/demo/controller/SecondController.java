@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class SecondController {
 
-	@GetMapping("/two")
+	@GetMapping("/show")
 	@ResponseBody
-	public String runner(HttpServletRequest request) {
-		System.out.println(request.getSession().getAttribute("text"));
-		return "Check console!";
+	public String show(HttpServletRequest request) {
+		return "Retrieved attribute from session	 :- " + request.getSession().getAttribute("text");
 	}
 }
