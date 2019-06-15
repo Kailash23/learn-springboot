@@ -32,14 +32,14 @@ public class MainController implements Filter {
 	@ResponseBody
 	public String valid() {
 		count++;
-		return "<em><strong>(" + count + ") This is a valid url! Try more ^</strong></em>";
+		return "<em><strong>(" + count + ") This is a valid url! </strong></em>";
 	}
 
 	@GetMapping("/invalid")
 	@ResponseBody
 	public String invalid() {
 		count++;
-		return "<em><strong>(" + count + ") This is not a valid url! Try more ^</strong></em>";
+		return "<em><strong>(" + count + ") This is not a valid url!</strong></em>";
 	}
 
 	@GetMapping("/*")
