@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/helloWorld")
+@RequestMapping("/app")
 public class MainController {
 
-	@GetMapping
+	@GetMapping("hello")
 	String getView(Model model) {
-		model.addAttribute("text", "Hello World!");
+		model.addAttribute("text", "Juggernaut");
 		return "index";
 	}
 }

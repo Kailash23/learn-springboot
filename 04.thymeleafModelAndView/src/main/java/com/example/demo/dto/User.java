@@ -2,8 +2,8 @@ package com.example.demo.dto;
 
 public class User {
 	
-	String name;
-	String email;
+	private String name;
+	private String email;
 
 	public String getName() {
 		return name;
