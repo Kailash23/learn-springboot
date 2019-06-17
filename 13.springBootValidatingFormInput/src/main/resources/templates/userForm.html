@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <meta charset="UTF-8" />
+    <title>User Management</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-sm-10">
+            <form th:action="@{/users/{action}(action=${action})}" method="post">
+                <div class="m-3" align="center">
+                    <h3><label>User Management</label></h3>
+                </div>
+                <input type="hidden" name="id" th:value="${user.id}" />
+                <div class="row  mb-3">
+                    <div class="col-sm-12">
+                        <div class="d-flex justify-content-start d-inline">
+                            <div class="col-sm-1">
+                                <label for="user_name" class="col-sm-2 ">Name:</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="user_name" name="name" th:value="${user.name}" th:field="*{user.name}" />
+                            </div>
+                            <div class="col-sm-7">
+                                <label class="text-danger" th:if="${#fields.hasErrors('user.name')}" th:errors="*{user.name}"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-12">
+                        <div class="d-flex justify-content-start d-inline">
+                            <div class="col-sm-1">
+                                <label for="user_age" class="col-sm-2 ">Age:</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="user_age" name="age" th:value="${user.age}" th:field="*{user.age}" />
+                            </div>
+                            <div class="col-sm-7">
+                                <label class="text-danger" th:if="${#fields.hasErrors('user.age')}" th:errors="*{user.age}"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row  mb-3">
+                    <div class="col-sm-12">
+                        <div class="d-flex justify-content-start d-inline">
+                            <div class="col-sm-1">
+                                <label for="user_birthday" class="col-sm-2 ">DOB:</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="date" class="form-control" id="user_birthday" name="birthday" th:value="${user.birthday}" th:field="*{user.birthday}" />
+                            </div>
+                            <div class="col-sm-7">
+                                <label class="text-danger" th:if="${#fields.hasErrors('user.birthday')}" th:errors="*{user.birthday}"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="d-flex justify-content-start d-inline">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-4">
+                                <input class="btn btn-primary" type="submit" value="Submit" />
+                                <input class="btn btn-primary ml-3" type="button" value="Back" onclick="history.back()" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

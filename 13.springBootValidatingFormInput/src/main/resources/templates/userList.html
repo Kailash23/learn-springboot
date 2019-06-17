@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <meta charset="UTF-8" />
+    <title>user list</title>
+</head>
+
+<body>
+    <div class="container">
+        <div th:if="!${#lists.isEmpty(userList)}">
+            <table class="table table-hover table-condensed ">
+                <div class="m-3" align="center">
+                    <h3><label>Users List</label></h3>
+                </div>
+                <thead>
+                    <tr>
+                        <th>user number</th>
+                        <th>name</th>
+                        <th>age</th>
+                        <th>Birth time</th>
+                        <th>Management</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${userList}">
+                        <th scope="row" th:text="${user.id}"></th>
+                        <td>
+                            <a th:href="@{/users/update/{userId}(userId=${user.id})}" th:text="${user.name}"></a>
+                        </td>
+                        <td th:text="${user.age}"></td>
+                        <td th:text="${user.birthday}"></td>
+                        <td><a class="btn btn-danger" th:href="@{/users/delete/{userId}(userId=${user.id})}">Delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+		<div th:if="${#lists.isEmpty(userList)}">
+			<div class="mt-5 mx-auto w-50 alert alert-danger text-center" role="alert">
+				  No user found. <a href="/users/create" class="alert-link">Click here</a> to add user.
+			</div>
+        </div>
+        <div th:if="!${#lists.isEmpty(userList)}">
+            <a class="btn btn-primary" href="/users/create" role="button">Create</a>
+        </div>
+    </div>
+</body>
+
+</html>
