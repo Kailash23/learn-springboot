@@ -18,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/", "/images/**").permitAll()
 			.anyRequest().authenticated()
 		.and()
-		    .logout().logoutUrl("/logout").logoutSuccessUrl("/login");
+			.logout().logoutUrl("/logout").logoutSuccessUrl("/");
 		
 	}
 }
