@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LoginController {
 
 	@SuppressWarnings("unchecked")
-	@GetMapping(value = "/user")
+	@GetMapping("/user")
 	public String user(Principal principal, Model model) {
 		OAuth2Authentication oAuth2Authentication = (OAuth2Authentication) principal;
 		Authentication authentication = oAuth2Authentication.getUserAuthentication();
@@ -24,5 +24,5 @@ public class LoginController {
 		model.addAttribute("name", name);
 		return "redirect";
 	}
-
+	
 }
